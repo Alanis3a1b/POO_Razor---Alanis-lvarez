@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using POO___Razor.Models;
 
+//Controlador para el index de equipos
 namespace POO___Razor.Controllers
 {
     public class EquiposController : Controller

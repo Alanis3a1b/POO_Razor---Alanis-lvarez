@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 //using System.Web.Mvc;
 
+//Controlador para la vista de vistasRazorController1
 namespace POO___Razor.Controllers
 {
     public class vistasRazorController1 : Controller
