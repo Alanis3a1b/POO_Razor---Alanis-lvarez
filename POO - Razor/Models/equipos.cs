@@ -1,0 +1,52 @@
+﻿using System.ComponentModel.DataAnnotations;
+namespace POO___Razor.Models
+{
+    public class equipos
+    {
+        [Key]
+
+        public int id_equipos { get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
+        public int? id_tipo_equipo { get; set; }
+        public int? id_marca { get; set; }
+        public string modelo { get; set; }
+        public int? anio_compra { get; set; }
+        public decimal costo { get; set; }
+        public int? vida_util { get; set; }
+        public int? id_estados_equipo { get; set; }
+        public string estado { get; set; }
+    }
+
+    public class marcas
+    {
+        [Key]
+        [Display(Name = "ID")]
+        public int id_marcas { get; set; }
+
+        [Display(Name = "Nombre de la marca")]
+        public string? nombre_marca { get; set; }
+
+        [Display(Name = "Estado")]
+        public string? estados { get; set; }
+    }
+
+    public class tipo_equipo
+    {
+        [Key]
+        public int id_tipo_equipo { get; set; }
+        public string descripcion { get; set; }
+        public string estados { get; set; }
+
+    }
+
+    public class estados_equipo
+    {
+        [Key]
+        public int id_estados_equipo { get; set; }
+        public string descripcion { get; set; }
+        public string estados { get; set; }
+
+    }
+
+}

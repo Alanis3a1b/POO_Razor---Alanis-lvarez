@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "formulario Razor con HTML Helper";
+}
+
+<h2>Formulario de alta de usuarios</h2>
+
+<h5>Nombre de usuario: </h5> @Html.TextBox("txtUserName", " ", new {@class = "form-control"})
+<h5>Contraseña: </h5> @Html.Password("Contrasena", "", new{@class="form-control"})
+<h5>Género: </h5> @Html.RadioButton("Genero", "Masculino", true, new { id = "masculino" })
+Masculino
+@Html.RadioButton("Genero", "Femenino", false, new { id = "femenino" })
+Femenino
+<h5>Pasatiempos: </h5> <label>Bailar</label>@Html.CheckBox("Bailar") <label>Correr</label>@Html.CheckBox("Correr") <label>Escalar</label>@Html.CheckBox("Escalar") 
+<h5>Dirección: </h5> @Html.TextArea("Dirección", "Ingrese su dirección", new{@class = "form-control", id="idDireccion"})
+@{
+    IEnumerable<string> strList = new List<string> { "POO", "TW", "MAT3", "FIS1" };
+}
+<h5>Curso: </h5> @Html.DropDownList("ddlCurso", new SelectList(strList, strList.FirstOrDefault()), "--Seleccionar curso ----")
+<h5>Conocimientos: </h5> 
+@Html.Label("Seleccione")
+<br/>
+@Html.ListBox("Seleccionar habilidades", new List<SelectListItem>{
+    new SelectListItem {Text = "C #", Value = "1"},
+    new SelectListItem {Text = "ASP.NET", Value = "2"},
+    new SelectListItem {Text = "ASP.NET Core", Value = "3"},
+    new SelectListItem {Text = "Azure", Value = "4"}
+})
+<br />
+@Html.ActionLink("Enviar Datos", "Alta", "Clientes")
+
+@using (Html.BeginForm("index", "inicio", FormMethod.Post))
+{
+    // Código aquí ...
+}
