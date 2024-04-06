@@ -49,11 +49,24 @@ namespace POO___Razor.Controllers
                                  select m).ToList();
             ViewData["listadoDeCursos"] = new SelectList(listaDeCursos, "id_curso", "nombre");
 
+
+            //Aquí estamos solicitando el listado de los usuarios
+            var listadoDeUsuarios = (from e in _equiposDbContext.usuarios
+                                    join m in _equiposDbContext.cursos on e.id_curso equals m.id_curso
+                                    select new
+                                    {
+                                        nombre = e.nombre,
+                                        direccion = e.direccion,
+                                        curso = e.id_curso
+                                    }).ToList();
+            ViewData["listadoUsuarios"] = listadoDeUsuarios;
+
             return View();
         }
 
-        //Función para guardar nuevos usuarios
-        public IActionResult CrearUsuarios(equipos nuevoUsuario)
+        //Función para guardar nuevos usuario
+        //(usuarios nuevoUsuario) ---> ("nombre tabla a meter datos" "variable")
+        public IActionResult CrearUsuarios(usuarios nuevoUsuario)
         {
             _equiposDbContext.Add(nuevoUsuario);
             _equiposDbContext.SaveChanges();
