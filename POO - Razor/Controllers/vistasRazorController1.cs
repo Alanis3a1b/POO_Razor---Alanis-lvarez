@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using POO___Razor.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,14 @@ namespace POO___Razor.Controllers
 {
     public class vistasRazorController1 : Controller
     {
+        private readonly equiposDbContext _equiposDbContext;
+
+        public vistasRazorController1(equiposDbContext equiposDbContext)
+        {
+            _equiposDbContext = equiposDbContext;
+        }
+
+
         // GET: vistasRazor
 
         public IActionResult Index()
@@ -34,7 +44,22 @@ namespace POO___Razor.Controllers
 
         public ActionResult formulario()
         {
+            //Aquí estamos invocando el listado de los cursos
+            var listaDeCursos = (from m in _equiposDbContext.cursos
+                                 select m).ToList();
+            ViewData["listadoDeCursos"] = new SelectList(listaDeCursos, "id_curso", "nombre");
+
             return View();
+        }
+
+        //Función para guardar nuevos usuarios
+        public IActionResult CrearUsuarios(equipos nuevoUsuario)
+        {
+            _equiposDbContext.Add(nuevoUsuario);
+            _equiposDbContext.SaveChanges();
+
+            return RedirectToAction("Formulario");
+
         }
     }
 }

@@ -15,10 +15,21 @@ Masculino
 Femenino
 <h5>Pasatiempos: </h5> <label>Bailar</label>@Html.CheckBox("Bailar") <label>Correr</label>@Html.CheckBox("Correr") <label>Escalar</label>@Html.CheckBox("Escalar") 
 <h5>Dirección: </h5> @Html.TextArea("Dirección", "Ingrese su dirección", new{@class = "form-control", id="idDireccion"})
-@{
+
+<div class="col-sm-2">
+    @Html.Label("lblcursos", "Cursos")
+</div>
+@* //Listado de los tipos cursos *@
+<div class="col-sm-4">
+    @Html.DropDownList("id_cursos", ViewData["listadoDeCursos"] as SelectList, "Seleccione una curso", new { @class = "form-control" })
+</div>
+
+@* @{
     IEnumerable<string> strList = new List<string> { "POO", "TW", "MAT3", "FIS1" };
 }
 <h5>Curso: </h5> @Html.DropDownList("ddlCurso", new SelectList(strList, strList.FirstOrDefault()), "--Seleccionar curso ----")
+ *@
+
 <h5>Conocimientos: </h5> 
 @Html.Label("Seleccione")
 <br/>
@@ -28,8 +39,13 @@ Femenino
     new SelectListItem {Text = "ASP.NET Core", Value = "3"},
     new SelectListItem {Text = "Azure", Value = "4"}
 })
-<br />
-@Html.ActionLink("Enviar Datos", "Alta", "Clientes")
+
+<div class="form-group row mb-4">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">
+        <input type="submit" class="btn btn-primary" value="Guardar" />
+    </div>
+</div>
 
 @using (Html.BeginForm("index", "inicio", FormMethod.Post))
 {
