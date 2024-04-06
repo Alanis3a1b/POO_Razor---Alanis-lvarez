@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 namespace POO___Razor.Models
 {
+    //Modelado de las tablas del formulario de la guía 0.9
     public class equipos
     {
         [Key]
@@ -48,5 +49,30 @@ namespace POO___Razor.Models
         public string estados { get; set; }
 
     }
+
+    //Modelado de las tablas del formulario de la guía 0.8
+    public class cursos
+    {
+        [Key]
+        public int id_curso { get; set; }
+        public string nombre { get; set; }
+
+    }
+
+    public class usuarios
+    {
+        [Key]
+        public int id_usuario { get; set; }
+        public string nombre { get; set; }
+        public string contrasenya { get; set; }
+        public string genero { get; set; }
+        public string direccion { get; set; }
+        public string pasatiempos { get; set; }
+        public int id_curso { get; set; }
+        public string conocimientos { get; set; }
+
+
+    }
+
 
 }
